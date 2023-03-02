@@ -15,9 +15,47 @@
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+
+
+Person.prototype.eat = function(food) { 
+  let wanring = `You've reached your daily limit`;
+  if (this.stomach.length < 10){
+    this.stomach.push(food);
+  } else{
+    this.stomach.push(wanring);
+  }
+}
+
+Person.prototype.poop = function(){
+  this.stomach = [];
+}
+
+Person.prototype.toString = function() {
+  return `${this.name}, ${this.age}`;
+};
+
+const person1 = new Person('Joe', 24)
+person1.eat('burger')
+person1.eat('taco')
+person1.eat('rice')
+person1.eat('beef')
+person1.eat('veg')
+person1.eat('chicken')
+person1.eat('eggs')
+person1.eat('milk')
+person1.eat('water')
+person1.eat('oats')
+person1.eat('fish taco')
+person1.eat('salad')
+person1.eat('megamind')
+console.log('Task 1:', person1)
+person1.poop();
+console.log('Task 1: POOP CHECK', person1)
 
 
 /*
@@ -36,10 +74,19 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(model, milesPerGallon, tank, odometer) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
+Car.prototype.fill = function(gallons) {
+  return this.tank = this.tank + gallons;
 }
 
+const car1 = new Car('Ford', 21);
+car1.fill(11)
+console.log(car1);
 
 /*
   TASK 3
