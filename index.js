@@ -96,9 +96,19 @@ console.log(car1);
         + Should return a string "Playing with x", x being the favorite toy.
 */
 
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = favoriteToy;
 }
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function(toy) {
+  toy = this.favoriteToy;
+  return `Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy.`;
+}
+const baby1 = new Baby('Lily', 1, 'Bratz')
+console.log(baby1);
+console.log(baby1.play());
 
 
 /* 
